@@ -160,7 +160,7 @@ class MyLitCube {
         val matAmbient = floatArrayOf(1.0f,1.0f,0.0f,1.0f)
         val matDiffuse = floatArrayOf(1.0f,1.0f,1.0f,1.0f)
         val matSpecular = floatArrayOf(1.0f,0.0f,1.0f,1.0f)
-        val matShininess=100.0f
+        val matShininess=10.0f
 
         val ambient= floatArrayOf(ambientLight[0]*matAmbient[0], ambientLight[1]*matAmbient[1],ambientLight[2]*matAmbient[2],1.0f)
         val diffuse= floatArrayOf(diffuseLight[0]*matDiffuse[0], diffuseLight[1]*matDiffuse[1],diffuseLight[2]*matDiffuse[2],1.0f)
