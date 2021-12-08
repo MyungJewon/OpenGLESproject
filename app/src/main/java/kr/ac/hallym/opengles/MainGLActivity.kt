@@ -1,10 +1,7 @@
-package com.example.contentsitproject
+package kr.ac.hallym.opengles
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import java.io.FileReader
-import java.lang.Exception
 
 class MainGLActivity : AppCompatActivity() {
     private lateinit var mainSurfaceView: MainGLSurfaceView
