@@ -1,4 +1,4 @@
-package com.example.contentsitproject
+package kr.ac.hallym.opengles
 
 import java.lang.Math.PI
 import kotlin.math.cos

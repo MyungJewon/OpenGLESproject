@@ -1,4 +1,4 @@
-package com.example.contentsitproject
+package kr.ac.hallym.opengles
 
 import android.content.Context
 import android.opengl.GLSurfaceView

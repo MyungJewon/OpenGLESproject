@@ -1,4 +1,4 @@
-package com.example.contentsitproject
+package kr.ac.hallym.opengles
 
 import org.junit.Test
 

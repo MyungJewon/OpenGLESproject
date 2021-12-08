@@ -1,4 +1,4 @@
-package com.example.contentsitproject
+package kr.ac.hallym.opengles
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -6,27 +6,30 @@ import android.graphics.BitmapFactory
 import android.opengl.GLES30
 import android.opengl.GLUtils
 import android.opengl.Matrix
+import android.os.SystemClock
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import java.io.BufferedInputStream
-
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
+import javax.microedition.khronos.opengles.GL
 
-const val COORDS_PER_VERTEX = 3
-
-class MyTextCube(private val myContext: Context){
+class MyTextCube(private val myContext: Context) {
 
     private val mvpMatrix=FloatArray(16)
     private val projectionMatrix=FloatArray(16)
     private val viewMatrix=FloatArray(16)
     private val modelMatrix=FloatArray(16)
+<<<<<<< HEAD:app/src/main/java/com/example/contentsitproject/MyTextCube.kt
     private var vertexCoords2=
         floatArrayOf(
             44.0f, -45.0f, 20.0f, 44.0f, -45.0f, 0.0f, 44.0f, -25.0f, 0.0f, 44.0f, -25.0f, 20.0f, 24.0f, -25.0f, 20.0f, 24.0f, -45.0f, 20.0f, 24.0f, -25.0f, 0.0f, 24.0f, -45.0f, 0.0f)
     private var vertexCoords=
         floatArrayOf(
+=======
+
+    private var vertexCoords= floatArrayOf(
+>>>>>>> b7aab0887606159c28facf5bbc10fa1d116f3826:app/src/main/java/kr/ac/hallym/opengles/MyTextCube.kt
         -0.5f, 0.5f,-0.5f,
          0.5f, 0.5f,-0.5f,
          0.5f,-0.5f,-0.5f,
@@ -166,7 +169,7 @@ class MyTextCube(private val myContext: Context){
         GLES30.glBindTexture(GLES30.GL_TEXTURE_2D,textureID[0])
         GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MIN_FILTER,GLES30.GL_LINEAR)
         GLES30.glTexParameteri(GLES30.GL_TEXTURE_2D,GLES30.GL_TEXTURE_MAG_FILTER,GLES30.GL_LINEAR)
-        GLUtils.texImage2D(GLES30.GL_TEXTURE_2D,0,loadBitmap("brick.bmp"),0)
+        GLUtils.texImage2D(GLES30.GL_TEXTURE_2D,0,loadBitmap("crate.bmp"),0)
     }
     private fun loadBitmap(filename:String):Bitmap{
         val manager=myContext.assets
@@ -196,7 +199,7 @@ class MyTextCube(private val myContext: Context){
         val ratio: Float = width.toFloat()/height.toFloat()
         Matrix.perspectiveM(projectionMatrix,0,90f,ratio,0.001f,1000f)
 
-        Matrix.setLookAtM(viewMatrix,0,1f,1f,1f,0f,0f,0f,0f,1f,0f)
+        Matrix.setLookAtM(viewMatrix,0,1f,1f,2f,0f,0f,0f,0f,1f,0f)
     }
     fun draw(rotationMatrix:FloatArray){
 
@@ -209,8 +212,8 @@ class MyTextCube(private val myContext: Context){
         //Pass the projection and view transformation t the shader
         GLES30.glUniformMatrix4fv(mvpMatrixHandle, 1, false, mvpMatrix, 0)
 
+        GLES30.glBindTexture(GLES30.GL_TEXTURE_2D,textureID[0])
         //Draw the square
         GLES30.glDrawArrays(GLES30.GL_TRIANGLES,0,vertexCount)
     }
-
 }
