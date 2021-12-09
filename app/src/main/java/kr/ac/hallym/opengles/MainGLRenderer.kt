@@ -46,7 +46,7 @@ class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
                 mTexGround=MyTexGround(myContext)
                 mTexPillar= MyTexPillar(myContext)
             }
-            5 -> mLitCube=MyLitCube()
+            5 -> mLitCube=MyLitCube(myContext)
         }
 
         // initialize a trianlge
