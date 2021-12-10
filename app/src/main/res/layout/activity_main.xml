@@ -48,6 +48,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="drawLitCube"
-        android:text="DRAWING A LIT CUDE" />
+        android:text="DRAWING A LT CUDE" />
 
 </LinearLayout>

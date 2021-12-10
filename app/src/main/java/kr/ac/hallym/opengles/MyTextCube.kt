@@ -20,14 +20,8 @@ class MyTextCube(private val myContext: Context) {
     private val projectionMatrix=FloatArray(16)
     private val viewMatrix=FloatArray(16)
     private val modelMatrix=FloatArray(16)
-    private var vertexCoords2=
-        floatArrayOf(
-            44.0f, -45.0f, 20.0f, 44.0f, -45.0f, 0.0f,
-            44.0f, -25.0f, 0.0f, 44.0f, -25.0f, 20.0f,
-            24.0f, -25.0f, 20.0f, 24.0f, -45.0f, 20.0f,
-            24.0f, -25.0f, 0.0f, 24.0f, -45.0f, 0.0f)
-    private var vertexCoords=
-        floatArrayOf(
+
+    private var vertexCoords= floatArrayOf(
         -0.5f, 0.5f,-0.5f,
          0.5f, 0.5f,-0.5f,
          0.5f,-0.5f,-0.5f,
