@@ -13,13 +13,16 @@ class MyTrackball {
     private var scalarQ=1.0
     private var vectorQ= doubleArrayOf(0.0,0.0,0.0)
 
-    var rotationMatrix= floatArrayOf(1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f,)
+    var rotationMatrix=
+        floatArrayOf(
+            1f,0f,0f,0f,0f,
+            1f,0f,0f,0f,0f,
+            1f,0f,0f,0f,0f,1f,)
 
     fun resize(w:Int,h:Int){
         width=w
         height=h
     }
-
     private fun project(xi:Int,yi:Int):DoubleArray{
         val pos =DoubleArray(3)
         pos[0]=(2.0*xi-width.toDouble())/width.toDouble()

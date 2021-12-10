@@ -9,7 +9,7 @@ import androidx.core.graphics.rotationMatrix
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
-var lightDir = floatArrayOf(1.0f,1.0f,1.0f,0.0f)
+var lightDir = floatArrayOf(1.0f,1.0f,1.0f)
 var ambientLight = floatArrayOf(0.2f,0.2f,0.2f,1.0f)
 var diffuseLight = floatArrayOf(1.0f,1.0f,1.0f,1.0f)
 val specularLight = floatArrayOf(1.0f,1.0f,1.0f,1.0f)
@@ -46,7 +46,7 @@ class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
                 mTexGround=MyTexGround(myContext)
                 mTexPillar= MyTexPillar(myContext)
             }
-            5 -> mLitCube=MyLitCube()
+            5 -> mLitCube=MyLitCube(myContext)
         }
 
         // initialize a trianlge
