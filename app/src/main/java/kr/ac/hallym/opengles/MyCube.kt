@@ -15,22 +15,6 @@ class MyCube {
     private val mvpMatrix=FloatArray(16)
     private val projectionManager=FloatArray(16)
     private val viewMatrix=FloatArray(16)
-    private val modelMatrix=FloatArray(16)
-
-    private var vertexCoords = floatArrayOf(
-        -0.34f,-10.0f,20.0f,
-        -9.0f,-5.0f,20.0f,
-        -9.0f,-5.0f,0.0f,
-        -0.34f,-10.0f,0.0f,
-        8.321f,-5.0f,0.0f,
-        8.321f,-5.0f,20.0f,
-        8.321f,5.0f,0.0f,
-        8.321f,5.0f,20.0f,
-        -9.0f,5.0f,0.0f,
-        -0.34f,10.0f,0.0f,
-        -0.34f,10.0f,20.0f,
-        -9.0f,5.0f,20.0f,
-    )
     private val vertexColors = floatArrayOf(
         1.0f, 0.0f, 1.0f,
         1.0f, 1.0f, 0.0f,
@@ -45,44 +29,17 @@ class MyCube {
         0.0f, 1.0f, 0.0f,
         0.0f, 0.0f, 1.0f,
     )
-
-    private val cubeIndex = shortArrayOf(
-        1,2,3,
-        1,3,4,
-        1,4,5,
-        1,5,6,
-        7,8,6,
-        7,6,5,
-        7,5,10,
-        9,10,5,
-        9,5,4,
-        9,4,3,
-        12,2,11,
-        8,11,2,
-        8,2,1,
-        8,1,6,
-        7,10,11,
-        7,11,8,
-        10,9,12,
-        10,12,11,
-        12,9,3,
-        12,3,2,
-    ) // order to draw vertices
-
     //initialize vertex byte buffer for shape coordinates
     private val vertexBuffer: FloatBuffer =
         // (# of coodinate values * 4 bytes per float)
-        ByteBuffer.allocateDirect(vertexCoords.size * 4).run {
+        ByteBuffer.allocateDirect(objvertex1.size * 4).run {
             order(ByteOrder.nativeOrder())
             asFloatBuffer().apply {
-                put(vertexCoords)
+                put(objvertex1)
                 position(0)
             }
         }
-
-    //initialize byte buffer for the draw list
     private val colorBuffer: FloatBuffer =
-        // (# of coodinate values * 4 bytes per short)
         ByteBuffer.allocateDirect(vertexColors.size * 4).run {
             order(ByteOrder.nativeOrder())
             asFloatBuffer().apply {
@@ -92,16 +49,10 @@ class MyCube {
         }
 
     private var indexBuffer: ShortBuffer =
-        // (numberof coordinate values * 4 bytes per float)
-        ByteBuffer.allocateDirect(cubeIndex.size * 4).run {
-            //use the device hardware's native byte order
+        ByteBuffer.allocateDirect(objface1.size * 4).run {
             order(ByteOrder.nativeOrder())
-
-            //create a floating point buffer from the ByteBuffer
             asShortBuffer().apply {
-                //add the coordinates to the FloatBuffer
-                put(cubeIndex)
-                // set the buffer to read the first coordinates
+                put(objface1)
                 position(0)
             }
         }
@@ -109,8 +60,8 @@ class MyCube {
     private val vertexShaderCode =
         "#version 300 es \n" +
                 "uniform mat4 uMVPMatrix;\n" +
-                "layout(location = 3) in vec4 vPosition; \n" +
-                "layout(location = 4) in vec4 vColor; \n" +
+                "layout(location = 0) in vec4 vPosition; \n" +
+                "layout(location = 1) in vec4 vColor; \n" +
                 "out vec4 fColor; \n" +
                 "void main(){ \n" +
                 "   gl_Position = uMVPMatrix * vPosition; \n" +
@@ -156,11 +107,10 @@ class MyCube {
         //mPositionHandle = GLES30.glGetAttribLocation(mProgram, "vPosition").also {
 
         //Enable a handle to the triangle vertices
-        GLES30.glEnableVertexAttribArray(3)
-
+        GLES30.glEnableVertexAttribArray(0)
         //Prepare the triangle coordinate data
         GLES30.glVertexAttribPointer(
-            3,
+            0,
             COORDS_PER_VERTEX,
             GLES30.GL_FLOAT,
             false,
@@ -176,11 +126,11 @@ class MyCube {
         //GLES30.glUniform4fv(it, 1, color, 0)
         //}
 
-        GLES30.glEnableVertexAttribArray(4)
+        GLES30.glEnableVertexAttribArray(1)
 
         // Prepare the square coordinate data
         GLES30.glVertexAttribPointer(
-            4,
+            1,
             COORDS_PER_VERTEX,
             GLES30.GL_FLOAT,
             false,
@@ -222,12 +172,6 @@ class MyCube {
         Matrix.setLookAtM(viewMatrix,0,1f,1f,100f,0f,0f,0f,0f,1f,0f)
     }
     fun draw(rotationMatrix:FloatArray){
-
-        val time=SystemClock.uptimeMillis() % 4000L
-        val angle=0.090f*time.toInt()
-        Matrix.setRotateM(modelMatrix,0,angle,1f,0f,0f)
-
-        Matrix.multiplyMM(mvpMatrix,0,viewMatrix,0,modelMatrix,0)
         Matrix.multiplyMM(mvpMatrix,0,viewMatrix,0, rotationMatrix,0)
 
         //Matrix.multiplyMM(mvpMatrix,0,viewMatrix,0,mvpMatrix,0)
@@ -238,6 +182,6 @@ class MyCube {
         GLES30.glUniformMatrix4fv(mvpMatrixHandle, 1, false, mvpMatrix, 0)
 
         //Draw the square
-        GLES30.glDrawElements(GLES30.GL_TRIANGLES, cubeIndex.size, GLES30.GL_UNSIGNED_SHORT, indexBuffer)
+        GLES30.glDrawElements(GLES30.GL_TRIANGLES, objface1.size, GLES30.GL_UNSIGNED_SHORT, indexBuffer)
     }
 }

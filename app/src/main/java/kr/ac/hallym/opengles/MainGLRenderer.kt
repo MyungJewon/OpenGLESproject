@@ -13,6 +13,8 @@ var lightDir = floatArrayOf(1.0f,1.0f,1.0f)
 var ambientLight = floatArrayOf(0.2f,0.2f,0.2f,1.0f)
 var diffuseLight = floatArrayOf(1.0f,1.0f,1.0f,1.0f)
 val specularLight = floatArrayOf(1.0f,1.0f,1.0f,1.0f)
+val objvertex1 = objvertex.toFloatArray()
+val objface1 = objface.toShortArray()
 class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
 
     private lateinit var mTriangle: MyTriangle
