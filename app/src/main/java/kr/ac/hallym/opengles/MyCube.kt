@@ -18,34 +18,55 @@ class MyCube {
     private val modelMatrix=FloatArray(16)
 
     private var vertexCoords = floatArrayOf(
-        -0.5f, 0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, 0.5f, -0.5f,
-        -0.5f, 0.5f, 0.5f,
-        -0.5f, -0.5f, 0.5f,
-        0.5f, -0.5f, 0.5f,
-        0.5f, 0.5f, 0.5f
+        -0.34f,-10.0f,20.0f,
+        -9.0f,-5.0f,20.0f,
+        -9.0f,-5.0f,0.0f,
+        -0.34f,-10.0f,0.0f,
+        8.321f,-5.0f,0.0f,
+        8.321f,-5.0f,20.0f,
+        8.321f,5.0f,0.0f,
+        8.321f,5.0f,20.0f,
+        -9.0f,5.0f,0.0f,
+        -0.34f,10.0f,0.0f,
+        -0.34f,10.0f,20.0f,
+        -9.0f,5.0f,20.0f,
     )
-
     private val vertexColors = floatArrayOf(
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f,
-        1.0f, 0.0f, 0.0f,
+        1.0f, 0.0f, 1.0f,
         1.0f, 1.0f, 0.0f,
         0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
         0.0f, 0.0f, 1.0f,
         1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 1.0f
+        1.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 1.0f,
     )
 
     private val cubeIndex = shortArrayOf(
-        0, 1, 2, 0, 2, 3,
-        2, 3, 7, 2, 7, 6,
-        1, 2, 6, 1, 6, 5,
-        4, 0, 1, 4, 1, 5,
-        3, 0, 4, 3, 4, 7,
-        5, 6, 7, 5, 7, 4
+        1,2,3,
+        1,3,4,
+        1,4,5,
+        1,5,6,
+        7,8,6,
+        7,6,5,
+        7,5,10,
+        9,10,5,
+        9,5,4,
+        9,4,3,
+        12,2,11,
+        8,11,2,
+        8,2,1,
+        8,1,6,
+        7,10,11,
+        7,11,8,
+        10,9,12,
+        10,12,11,
+        12,9,3,
+        12,3,2,
     ) // order to draw vertices
 
     //initialize vertex byte buffer for shape coordinates
@@ -198,7 +219,7 @@ class MyCube {
         val ratio: Float = width.toFloat()/height.toFloat()
         Matrix.perspectiveM(projectionManager,0,90f,ratio,0.001f,1000f)
 
-        Matrix.setLookAtM(viewMatrix,0,1f,1f,1f,0f,0f,0f,0f,1f,0f)
+        Matrix.setLookAtM(viewMatrix,0,1f,1f,100f,0f,0f,0f,0f,1f,0f)
     }
     fun draw(rotationMatrix:FloatArray){
 

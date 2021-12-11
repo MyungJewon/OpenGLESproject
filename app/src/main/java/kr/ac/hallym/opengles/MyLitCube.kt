@@ -70,16 +70,6 @@ class MyLitCube(private val myContext: Context) {
         0.0f,0.0f,0.0f,1.0f,1.0f,1.0f,0.0f,0.0f,1.0f,1.0f,1.0f,0.0f,
         0.0f,0.0f,0.0f,1.0f,1.0f,1.0f,0.0f,0.0f,1.0f,1.0f,1.0f,0.0f,
     )
-//    private var vertexCoords= floatArrayOf(
-//        -0.5f, 0.5f,-0.5f,
-//        -0.5f,-0.5f,-0.5f,
-//         0.5f,-0.5f,-0.5f,
-//         0.5f, 0.5f,-0.5f,
-//        -0.5f, 0.5f, 0.5f,
-//        -0.5f,-0.5f, 0.5f,
-//         0.5f,-0.5f, 0.5f,
-//         0.5f, 0.5f, 0.5f,
-//    )
     private var vertexNormals= floatArrayOf(
     -0.57735f, 0.57735f,-0.57735f,
      0.57735f, 0.57735f,-0.57735f,
