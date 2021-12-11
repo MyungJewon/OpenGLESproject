@@ -24,7 +24,7 @@ class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
     private lateinit var mTexGround: MyTexGround
     private lateinit var mTexPillar: MyTexPillar
     private lateinit var mLitCube:MyLitCube
-    private lateinit var MLitGround:MyLitGround
+    
  //   private val mvpMatrix = FloatArray(16)
    // private val projectionMatrix = FloatArray(16)
    // private val viewMatrix = FloatArray(16)
@@ -46,10 +46,7 @@ class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
                 mTexGround=MyTexGround(myContext)
                 mTexPillar= MyTexPillar(myContext)
             }
-            5 -> {
-                mLitCube = MyLitCube(myContext)
-                MLitGround= MyLitGround(myContext)
-            }
+            5 -> mLitCube=MyLitCube(myContext)
         }
 
         // initialize a trianlge
@@ -78,10 +75,7 @@ class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
                 mTexCube.draw(mTrackball.rotationMatrix)
 
             }
-            5->{
-                MLitGround.draw(mTrackball.rotationMatrix)
-                mLitCube.draw((mTrackball.rotationMatrix))
-            }
+            5->mLitCube.draw((mTrackball.rotationMatrix))
         }
 
     }
@@ -112,10 +106,7 @@ class MainGLRenderer(private val myContext: Context): GLSurfaceView.Renderer{
                 mTexGround.resize(width,height)
                 mTexPillar.resize(width,height)
             }
-            5->{
-                mLitCube.resize(width,height)
-                MLitGround.resize(width, height)
-            }
+            5->mLitCube.resize(width,height)
         }
         mTrackball.resize(width,height)
     }

@@ -154,8 +154,8 @@ class MyTexGround(private val myContext: Context) {
     fun resize(width:Int,height: Int){
         val ratio: Float = width.toFloat()/height.toFloat()
         Matrix.perspectiveM(projectionMatrix,0,90f,ratio,0.001f,1000f)
-        Matrix.setLookAtM(viewMatrix,0,1f,1f,2f,0f,0f,0f,0f,1f,0f)
 
+        Matrix.setLookAtM(viewMatrix,0,1f,1f,2f,0f,0f,0f,0f,1f,0f)
     }
     fun draw(rotationMatrix:FloatArray){
 
