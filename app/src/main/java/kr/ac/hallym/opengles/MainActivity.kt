@@ -12,7 +12,7 @@ import java.io.FileReader
 var drawMode: Int = -1
 val objvertex= ArrayList<Float>()
 val objface=ArrayList<Short>()
-
+val objcolor=ArrayList<Float>()
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     fun drawCube(view: View){
         drawMode = 2;
 
-        var objscr:String=filesDir.toString()+"/tinker.obj"
+        var objscr:String=filesDir.toString()+"/xXing_non.obj"
         var objread:String=File(objscr).bufferedReader().use { it.readText()}
         val objlist=objread.split("\n")
 
@@ -49,12 +49,13 @@ class MainActivity : AppCompatActivity() {
                 val j = i.replace("f ", "")
                 val k= j.split(" ")
                 for(q in k)
-                    objface.add(q.toFloat().toInt().toShort())
+                    objface.add((q.toFloat().toInt()-1).toShort())
             }
         }
 //        Log.d("Log1", objvertex.toString()+"f")
 //        Log.d("Log2", objface.toString())
-
+        for(i in 1 until objvertex.size)
+            objcolor.add(1.0f)
         val intent = Intent(this,MainGLActivity::class.java)
         startActivity(intent)
     }
