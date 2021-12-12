@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         val strFileList = ArrayList<String>()
         val fileSize = ArrayList<String>()
         for(file in files){
-            strFileList +=file.name
+            if(file.name.contains(".obj"))
+                strFileList +=file.name
             fileSize +=file.length().toString()
         }
 //        어답터 설정
@@ -41,8 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun drawCube(view: String){
-        drawMode = 2;
-
+        drawMode=2
         objvertex.clear()
         objface.clear()
         objcolor.clear()
@@ -64,8 +64,6 @@ class MainActivity : AppCompatActivity() {
                     objface.add((q.toFloat().toInt()-1).toShort())
             }
         }
-        Log.d("Log2", objvertex.size.toString())
-        Log.d("Log3", objface.size.toString())
         for(i in 0 until objvertex.size)
             objcolor.add(Math.random().toFloat())
         val intent = Intent(this,MainGLActivity::class.java)

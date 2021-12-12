@@ -13,6 +13,9 @@ class MyCube {
     private val mvpMatrix=FloatArray(16)
     private val projectionManager=FloatArray(16)
     private val viewMatrix=FloatArray(16)
+    private val objvertex1=objvertex.toFloatArray()
+    private val objcolor1=objcolor.toFloatArray()
+    private val objface1=objface.toShortArray()
     private val vertexBuffer: FloatBuffer =
         // (# of coodinate values * 4 bytes per float)
         ByteBuffer.allocateDirect(objvertex1.size * 4).run {
