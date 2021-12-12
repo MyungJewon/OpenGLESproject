@@ -54,10 +54,11 @@ class MainActivity : AppCompatActivity() {
         }
 //        Log.d("Log1", objvertex.toString()+"f")
 //        Log.d("Log2", objface.toString())
-        for(i in 1 until objvertex.size)
-            objcolor.add(1.0f)
+        for(i in 0 until objvertex.size)
+            objcolor.add(Math.random().toFloat())
         val intent = Intent(this,MainGLActivity::class.java)
         startActivity(intent)
+
     }
 
     fun drawHexagonalPyramid(view: View){
