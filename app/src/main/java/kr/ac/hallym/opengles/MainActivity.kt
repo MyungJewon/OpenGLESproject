@@ -18,6 +18,7 @@ var drawMode: Int = -1
 val objvertex= ArrayList<Float>()
 val objface=ArrayList<Short>()
 val objcolor=ArrayList<Float>()
+val objnomal=ArrayList<Float>()
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         objvertex.clear()
         objface.clear()
         objcolor.clear()
+        objnomal.clear()
         var objscr:String=filesDir.toString()+"/"+view
         var objread:String=File(objscr).bufferedReader().use { it.readText()}
         val objlist=objread.split("\n")
@@ -54,8 +56,10 @@ class MainActivity : AppCompatActivity() {
             if(i.indexOf("v")==0){
                 val j = i.replace("v ", "")
                 val k= j.split(" ")
-                for(q in k)
+                for(q in k){
                     objvertex.add(q.toFloat())
+                    objnomal.add((q.toFloat().toString()+"7735").toFloat())
+                }
             }
             else if(i.indexOf("f")==0){
                 val j = i.replace("f ", "")
